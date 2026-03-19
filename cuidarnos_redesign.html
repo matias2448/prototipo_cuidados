@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CUIDARnos | Cuidadores Profesionales para tu Familia en Argentina</title>
+<meta name="description" content="Conectamos a tu familia con cuidadores certificados, gestionados y asegurados. Sin trámites, sin riesgos. Consultá gratis hoy.">
+<meta property="og:title" content="CUIDARnos | Cuidadores Profesionales para tu Familia">
+<meta property="og:description" content="Plataforma argentina de cuidado integral para adultos mayores, niños y personas con discapacidad. Cuidadores verificados, seguros y coordinados.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #1D7A5F;
+    --verde-oscuro: #0F4D3B;
+    --verde-claro: #E8F5F0;
+    --verde-medio: #2EA583;
+    --dorado: #C8963E;
+    --dorado-claro: #FDF3E3;
+    --crema: #FAF8F4;
+    --gris-texto: #2C2C2C;
+    --gris-medio: #5A5A5A;
+    --gris-suave: #F2F2F0;
+    --blanco: #FFFFFF;
+    --negro: #111111;
+    --coral: #E8654A;
+    --coral-claro: #FDEEE9;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --radio: 16px;
+    --radio-grande: 28px;
+    --sombra: 0 4px 32px rgba(0,0,0,0.08);
+    --sombra-hover: 0 12px 48px rgba(0,0,0,0.14);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--gris-texto);
+    background: var(--crema);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ========== ANIMATIONS ========== */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes pulseGlow { 0%,100%{box-shadow:0 0 0 0 rgba(29,122,95,0.3);} 50%{box-shadow:0 0 0 12px rgba(29,122,95,0);} }
+  @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+  @keyframes countUp { from{opacity:0;} to{opacity:1;} }
+  @keyframes slideInLeft { from{opacity:0;transform:translateX(-32px);} to{opacity:1;transform:translateX(0);} }
+  @keyframes ripple { to { transform:scale(4); opacity:0; } }
+
+  .fade-up { animation: fadeUp 0.7s ease both; }
+  .fade-up-2 { animation: fadeUp 0.7s 0.15s ease both; }
+  .fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
+  .fade-up-4 { animation: fadeUp 0.7s 0.45s ease both; }
+  .fade-in { animation: fadeIn 1s ease both; }
+  .float { animation: floatY 4s ease-in-out infinite; }
+
+  /* ========== NAVBAR ========== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 72px;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(29,122,95,0.1);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 24px; font-weight: 700;
+    color: var(--verde-oscuro);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .logo-leaf { color: var(--verde-medio); }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--gris-medio);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--verde); }
+  .nav-cta {
+    background: var(--verde);
+    color: var(--blanco) !important;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 14px !important; font-weight: 600 !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--verde-oscuro) !important; transform: translateY(-1px); }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 60px 60px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(29,122,95,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -60px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,150,62,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--verde-claro);
+    color: var(--verde-oscuro);
+    font-size: 13px; font-weight: 600;
+    padding: 6px 16px; border-radius: 50px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--verde-medio);
+    animation: pulseGlow 2s infinite;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 62px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--negro);
+    margin-bottom: 24px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--verde);
+    position: relative;
+  }
+  .hero-title em::after {
+    content: '';
+    position: absolute; bottom: 2px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--verde-medio), transparent);
+    border-radius: 2px;
+  }
+  .hero-desc {
+    font-size: 18px; line-height: 1.7;
+    color: var(--gris-medio);
+    margin-bottom: 40px;
+    max-width: 520px;
+  }
+  .hero-ctas {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    align-items: center; margin-bottom: 48px;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--verde);
+    color: var(--blanco);
+    font-family: var(--font-body);
+    font-size: 16px; font-weight: 600;
+    padding: 16px 32px; border-radius: 50px;
+    border: none; cursor: pointer;
+    transition: all 0.2s;
+    position: relative; overflow: hidden;
+    animation: pulseGlow 3s 1s infinite;
+  }
+  .btn-primary:hover { background: var(--verde-oscuro); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(29,122,95,0.35); }
+  .btn-primary .btn-icon { font-size: 18px; }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--verde-oscuro);
+    font-family: var(--font-body);
+    font-size: 15px; font-weight: 600;
+    padding: 14px 24px; border-radius: 50px;
+    border: 2px solid var(--verde);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--verde-claro); }
+  .hero-trust {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--gris-medio);
+  }
+  .trust-avatars {
+    display: flex;
+  }
+  .trust-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 2px solid var(--blanco);
+    background: var(--verde-claro);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 12px; color: var(--verde-oscuro);
+    margin-left: -10px;
+  }
+  .trust-avatar:first-child { margin-left: 0; }
+  .trust-stars { color: var(--dorado); font-size: 14px; letter-spacing: 1px; }
+
+  /* Hero Visual Side */
+  .hero-visual {
+    position: relative;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .hero-card-main {
+    background: var(--blanco);
+    border-radius: var(--radio-grande);
+    padding: 32px;
+    box-shadow: var(--sombra);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    z-index: 2;
+  }
+  .cuidadora-profile {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .cuidadora-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--verde-claro), var(--verde-medio));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 28px; color: var(--verde-oscuro);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .online-dot {
+    position: absolute; bottom: 2px; right: 2px;
+    width: 14px; height: 14px;
+    background: #2ECC71;
+    border-radius: 50%; border: 2px solid white;
+  }
+  .cuidadora-name { font-weight: 700; font-size: 17px; }
+  .cuidadora-titulo { font-size: 13px; color: var(--gris-medio); }
+  .cuidadora-rating {
+    display: flex; align-items: center; gap: 6px;
+    margin-top: 4px;
+    font-size: 13px; font-weight: 600; color: var(--dorado);
+  }
+  .profile-stats {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px; margin-bottom: 20px;
+  }
+  .stat-pill {
+    background: var(--gris-suave);
+    border-radius: 12px; padding: 10px;
+    text-align: center;
+  }
+  .stat-pill .num { font-weight: 700; font-size: 18px; color: var(--verde); }
+  .stat-pill .lbl { font-size: 11px; color: var(--gris-medio); line-height: 1.3; }
+  .services-tag-list {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 20px;
+  }
+  .tag {
+    background: var(--verde-claro);
+    color: var(--verde-oscuro);
+    font-size: 12px; font-weight: 600;
+    padding: 5px 12px; border-radius: 50px;
+  }
+  .btn-contratar {
+    width: 100%;
+    background: var(--verde);
+    color: var(--blanco);
+    border: none; border-radius: 12px;
+    padding: 14px;
+    font-family: var(--font-body);
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-contratar:hover { background: var(--verde-oscuro); }
+
+  /* Floating badges around card */
+  .float-badge {
+    position: absolute;
+    background: var(--blanco);
+    border-radius: 14px;
+    padding: 12px 16px;
+    box-shadow: var(--sombra);
+    font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+    z-index: 3;
+  }
+  .badge-1 { top: -20px; right: -20px; }
+  .badge-2 { bottom: 20px; left: -40px; }
+  .badge-icon { font-size: 18px; }
+
+  /* ========== PROPUESTA DUAL ========== */
+  .dual-section {
+    padding: 80px 60px;
+    background: var(--blanco);
+  }
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--verde-medio);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: var(--negro);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 17px; color: var(--gris-medio);
+    max-width: 600px; margin: 0 auto;
+    line-height: 1.7;
+  }
+  .dual-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .dual-card {
+    border-radius: var(--radio-grande);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .dual-card:hover { transform: translateY(-6px); box-shadow: var(--sombra-hover); }
+  .dual-card.familias {
+    background: linear-gradient(145deg, var(--verde-oscuro), var(--verde));
+    color: var(--blanco);
+  }
+  .dual-card.cuidadores {
+    background: linear-gradient(145deg, var(--dorado-claro), #FDE9C0);
+    color: var(--negro);
+    border: 2px solid rgba(200,150,62,0.2);
+  }
+  .dual-card::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+  .dual-card.familias::before { background: var(--blanco); }
+  .dual-card.cuidadores::before { background: var(--dorado); }
+  .dual-card-icon {
+    font-size: 48px; margin-bottom: 20px;
+    display: block;
+  }
+  .dual-card-title {
+    font-family: var(--font-display);
+    font-size: 26px; font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .dual-card-desc {
+    font-size: 15px; line-height: 1.7;
+    opacity: 0.85;
+    margin-bottom: 28px;
+  }
+  .dual-card-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+    margin-bottom: 32px;
+  }
+  .dual-card-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; font-weight: 500;
+  }
+  .dual-card-list li::before {
+    content: '✓';
+    font-weight: 800;
+    font-size: 13px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .dual-card.familias .dual-card-list li::before { color: #7EECC7; }
+  .dual-card.cuidadores .dual-card-list li::before { color: var(--dorado); }
+  .btn-dual {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-body);
+    font-size: 15px; font-weight: 700;
+    padding: 14px 28px; border-radius: 50px;
+    border: none; cursor: pointer; transition: all 0.2s;
+  }
+  .dual-card.familias .btn-dual {
+    background: var(--blanco); color: var(--verde-oscuro);
+  }
+  .dual-card.familias .btn-dual:hover { background: var(--verde-claro); }
+  .dual-card.cuidadores .btn-dual {
+    background: var(--dorado); color: var(--blanco);
+  }
+  .dual-card.cuidadores .btn-dual:hover { background: #B5832F; }
+
+  /* ========== CÓMO FUNCIONA ========== */
+  .steps-section {
+    padding: 80px 60px;
+    background: var(--crema);
+  }
+  .steps-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .steps-tabs {
+    display: flex; gap: 8px; justify-content: center;
+    margin-bottom: 48px; flex-wrap: wrap;
+  }
+  .tab-btn {
+    padding: 10px 24px; border-radius: 50px;
+    border: 2px solid transparent;
+    font-family: var(--font-body); font-size: 14px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s;
+    background: var(--gris-suave); color: var(--gris-medio);
+  }
+  .tab-btn.active { background: var(--verde); color: var(--blanco); border-color: var(--verde); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeUp 0.4s ease; }
+  .steps-list { display: flex; flex-direction: column; gap: 0; }
+  .step-item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    align-items: flex-start;
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .step-num.verde { background: var(--verde-claro); color: var(--verde-oscuro); }
+  .step-num.dorado { background: var(--dorado-claro); color: #8B5E15; }
+  .step-content {}
+  .step-title { font-size: 18px; font-weight: 700; color: var(--negro); margin-bottom: 6px; }
+  .step-desc { font-size: 15px; color: var(--gris-medio); line-height: 1.6; }
+  .step-tag {
+    display: inline-block; margin-top: 10px;
+    background: var(--verde-claro);
+    color: var(--verde-oscuro);
+    font-size: 12px; font-weight: 700;
+    padding: 4px 12px; border-radius: 50px;
+  }
+  .step-tag.dorado-tag { background: var(--dorado-claro); color: #8B5E15; }
+
+  /* ========== STATS ========== */
+  .stats-section {
+    padding: 80px 60px;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: 900px; margin: 0 auto;
+    text-align: center;
+  }
+  .stat-item {}
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 54px; font-weight: 700;
+    color: var(--blanco);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-number span { color: var(--verde-medio); }
+  .stat-label { font-size: 14px; opacity: 0.8; line-height: 1.4; }
+  .stat-divider {
+    width: 1px; height: 80px;
+    background: rgba(255,255,255,0.15);
+    margin: auto;
+  }
+
+  /* ========== DIFERENCIADORES ========== */
+  .diff-section {
+    padding: 80px 60px;
+    background: var(--blanco);
+  }
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1000px; margin: 0 auto;
+  }
+  .diff-card {
+    padding: 36px 28px;
+    border-radius: var(--radio-grande);
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .diff-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--verde-medio), var(--verde-claro));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .diff-card:hover { transform: translateY(-4px); box-shadow: var(--sombra); border-color: rgba(29,122,95,0.2); }
+  .diff-card:hover::before { transform: scaleX(1); }
+  .diff-icon {
+    width: 56px; height: 56px; border-radius: 16px;
+    background: var(--verde-claro);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin-bottom: 20px;
+  }
+  .diff-title { font-size: 17px; font-weight: 700; color: var(--negro); margin-bottom: 10px; }
+  .diff-desc { font-size: 14px; color: var(--gris-medio); line-height: 1.65; }
+  .diff-highlight {
+    display: inline-block; margin-top: 14px;
+    font-size: 12px; font-weight: 700;
+    color: var(--verde);
+    letter-spacing: 0.5px;
+  }
+
+  /* ========== COMPARATIVA ========== */
+  .compare-section {
+    padding: 80px 60px;
+    background: var(--crema);
+  }
+  .compare-table-wrap {
+    max-width: 860px; margin: 0 auto;
+    background: var(--blanco);
+    border-radius: var(--radio-grande);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+  }
+  table.compare-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 15px;
+  }
+  .compare-table thead th {
+    padding: 20px 28px;
+    text-align: left;
+    font-weight: 700; font-size: 14px;
+    border-bottom: 2px solid var(--gris-suave);
+    background: var(--gris-suave);
+  }
+  .compare-table thead th:first-child { color: var(--gris-medio); font-weight: 400; font-size: 13px; }
+  .compare-table thead th.highlight {
+    background: var(--verde-claro);
+    color: var(--verde-oscuro);
+  }
+  .compare-table tbody tr:hover td { background: rgba(29,122,95,0.03); }
+  .compare-table tbody td {
+    padding: 16px 28px;
+    border-bottom: 1px solid var(--gris-suave);
+    vertical-align: middle;
+  }
+  .compare-table tbody td:first-child { font-weight: 500; color: var(--gris-texto); font-size: 14px; }
+  .compare-table tbody td.highlight {
+    background: rgba(29,122,95,0.04);
+    font-weight: 700; color: var(--verde-oscuro);
+  }
+  .check-ok { color: var(--verde); font-size: 18px; }
+  .check-no { color: #CCC; font-size: 18px; }
+  .check-parcial { color: var(--dorado); font-size: 14px; }
+
+  /* ========== TESTIMONIOS ========== */
+  .testimonios-section {
+    padding: 80px 60px;
+    background: var(--blanco);
+  }
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px; margin: 0 auto;
+  }
+  .testimonio-card {
+    background: var(--crema);
+    border-radius: var(--radio-grande);
+    padding: 32px;
+    position: relative;
+    transition: all 0.25s;
+  }
+  .testimonio-card:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+  .testimonio-quote {
+    font-family: var(--font-display);
+    font-size: 64px; line-height: 0.6;
+    color: var(--verde-claro);
+    margin-bottom: 16px;
+  }
+  .testimonio-text {
+    font-size: 15px; line-height: 1.7;
+    color: var(--gris-texto);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonio-text em { font-style: normal; font-weight: 700; color: var(--verde); }
+  .testimonio-autor {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .autor-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px;
+    flex-shrink: 0;
+  }
+  .autor-name { font-weight: 700; font-size: 14px; }
+  .autor-info { font-size: 12px; color: var(--gris-medio); }
+  .testimonio-stars { color: var(--dorado); font-size: 12px; margin-bottom: 2px; }
+
+  /* ========== COBERTURA ========== */
+  .cobertura-section {
+    padding: 80px 60px;
+    background: var(--crema);
+  }
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 900px; margin: 0 auto;
+  }
+  .servicio-card {
+    background: var(--blanco);
+    border-radius: var(--radio);
+    padding: 28px 20px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.07);
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+  .servicio-card:hover {
+    border-color: var(--verde-medio);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(29,122,95,0.12);
+  }
+  .servicio-icon { font-size: 36px; margin-bottom: 12px; }
+  .servicio-name { font-size: 14px; font-weight: 700; color: var(--negro); margin-bottom: 6px; }
+  .servicio-desc { font-size: 12px; color: var(--gris-medio); line-height: 1.5; }
+
+  /* ========== ALIADOS ========== */
+  .aliados-section {
+    padding: 60px;
+    background: var(--blanco);
+    border-top: 1px solid var(--gris-suave);
+  }
+  .aliados-label {
+    text-align: center; font-size: 13px;
+    color: var(--gris-medio); font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .aliados-logos {
+    display: flex; justify-content: center; align-items: center;
+    gap: 48px; flex-wrap: wrap;
+  }
+  .aliado-pill {
+    background: var(--gris-suave);
+    border-radius: 50px;
+    padding: 12px 28px;
+    font-weight: 700; font-size: 14px;
+    color: var(--gris-medio);
+    white-space: nowrap;
+  }
+
+  /* ========== CTA FINAL ========== */
+  .cta-section {
+    padding: 100px 60px;
+    background: linear-gradient(145deg, var(--verde-oscuro) 0%, #1A6B52 50%, var(--verde) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section::after {
+    content: '';
+    position: absolute; bottom: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(200,150,62,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 700;
+    color: var(--blanco);
+    margin-bottom: 16px;
+    position: relative; z-index: 1;
+  }
+  .cta-desc {
+    font-size: 18px; color: rgba(255,255,255,0.8);
+    margin-bottom: 48px; max-width: 540px; margin-left: auto; margin-right: auto;
+    position: relative; z-index: 1;
+  }
+  .cta-form {
+    display: flex; gap: 12px; max-width: 480px;
+    margin: 0 auto 24px;
+    position: relative; z-index: 1;
+  }
+  .cta-input {
+    flex: 1;
+    padding: 16px 20px;
+    border-radius: 50px;
+    border: none; outline: none;
+    font-family: var(--font-body); font-size: 15px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .cta-input:focus { box-shadow: 0 4px 16px rgba(0,0,0,0.15), 0 0 0 3px rgba(200,150,62,0.4); }
+  .btn-cta-gold {
+    background: var(--dorado); color: var(--blanco);
+    border: none; border-radius: 50px;
+    padding: 16px 28px; font-family: var(--font-body);
+    font-size: 15px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-cta-gold:hover { background: #B5832F; transform: translateY(-1px); }
+  .cta-alt {
+    position: relative; z-index: 1;
+    font-size: 14px; color: rgba(255,255,255,0.65);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #25D366; color: var(--blanco);
+    padding: 10px 20px; border-radius: 50px;
+    font-size: 14px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s;
+    border: none;
+  }
+  .whatsapp-btn:hover { background: #1DA851; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--negro);
+    color: rgba(255,255,255,0.7);
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+  .footer-brand .nav-logo {
+    color: var(--blanco);
+    font-size: 22px; margin-bottom: 12px;
+  }
+  .footer-desc { font-size: 14px; line-height: 1.7; opacity: 0.65; max-width: 280px; }
+  .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+  .social-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; transition: all 0.2s; cursor: pointer;
+    color: var(--blanco); border: none;
+  }
+  .social-btn:hover { background: var(--verde-medio); }
+  .footer-col h4 { color: var(--blanco); font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+  .footer-col a {
+    display: block; font-size: 13px; opacity: 0.65;
+    margin-bottom: 10px; transition: opacity 0.2s;
+  }
+  .footer-col a:hover { opacity: 1; }
+  .footer-bottom {
+    background: #0A0A0A;
+    padding: 20px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: rgba(255,255,255,0.4);
+  }
+  .sello {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: rgba(255,255,255,0.5);
+  }
+
+  /* ========== FLOATING WHATSAPP ========== */
+  .float-wa {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 58px; height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; cursor: pointer;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+    animation: pulseGlow 3s infinite;
+    transition: transform 0.2s;
+    text-decoration: none;
+  }
+  .float-wa:hover { transform: scale(1.1); }
+  .float-wa-tooltip {
+    position: absolute; right: 68px;
+    background: var(--negro); color: var(--blanco);
+    font-size: 13px; font-weight: 600;
+    padding: 8px 14px; border-radius: 8px;
+    white-space: nowrap; opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .float-wa:hover .float-wa-tooltip { opacity: 1; }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; text-align: center; }
+    .hero-desc { margin: 0 auto 32px; }
+    .hero-ctas { justify-content: center; }
+    .hero-trust { justify-content: center; }
+    .hero-visual { display: none; }
+    .dual-cards { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .diff-grid { grid-template-columns: 1fr 1fr; }
+    .testimonios-grid { grid-template-columns: 1fr; }
+    .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+    section, .steps-section, .diff-section, .compare-section, .testimonios-section, .cobertura-section, .aliados-section, .cta-section, .stats-section, .dual-section {
+      padding-left: 24px; padding-right: 24px;
+    }
+    .cta-form { flex-direction: column; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    footer { padding: 40px 24px; }
+  }
+  @media (max-width: 600px) {
+    .diff-grid { grid-template-columns: 1fr; }
+    .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+    .compare-table thead th, .compare-table tbody td { padding: 12px 16px; font-size: 13px; }
+  }
+
+  /* ========== SCROLL REVEAL ========== */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-2 { transition-delay: 0.1s; }
+  .reveal-3 { transition-delay: 0.2s; }
+  .reveal-4 { transition-delay: 0.3s; }
+
+  /* Banner informativo */
+  .info-banner {
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .info-banner a { color: #7EECC7; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="info-banner">
+  🌿 Empresa social comprometida con el cuidado digno y formalizado &nbsp;·&nbsp;
+  <a href="#cta">Consultá gratis hoy →</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <span class="logo-leaf">✿</span> CUIDAR<em style="font-style:italic;color:var(--verde-medio)">nos</em>
+  </div>
+  <div class="nav-links">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#cta" class="nav-cta">Solicitar cuidador</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-badge">✦ Plataforma activa en Argentina</div>
+    <h1 class="hero-title fade-up">
+      El cuidado que<br>tu familia merece,<br><em>garantizado</em>
+    </h1>
+    <p class="hero-desc fade-up-2">
+      Conectamos a familias con <strong>cuidadores profesionales, verificados y asegurados</strong>. Nos hacemos cargo de todo: salarios, impuestos, seguros y reemplazos. Vos solo cuidá de lo que importa.
+    </p>
+    <div class="hero-ctas fade-up-3">
+      <button class="btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">
+        <span class="btn-icon">🤝</span>
+        Quiero un cuidador
+      </button>
+      <button class="btn-secondary" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">
+        ▶ Ver cómo funciona
+      </button>
+    </div>
+    <div class="hero-trust fade-up-4">
+      <div class="trust-avatars">
+        <div class="trust-avatar">MG</div>
+        <div class="trust-avatar">LP</div>
+        <div class="trust-avatar">CR</div>
+        <div class="trust-avatar">AN</div>
+      </div>
+      <div>
+        <div class="trust-stars">★★★★★</div>
+        <div style="font-size:13px;color:var(--gris-medio)">Familias que ya confían en CUIDARnos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div style="position:relative;">
+      <div class="hero-card-main float">
+        <div class="cuidadora-profile">
+          <div class="cuidadora-avatar">
+            M
+            <div class="online-dot"></div>
+          </div>
+          <div>
+            <div class="cuidadora-name">María Fernanda G.</div>
+            <div class="cuidadora-titulo">Cuidadora certificada · 8 años</div>
+            <div class="cuidadora-rating">
+              ★ 4.98 <span style="color:var(--gris-medio);font-weight:400">(124 servicios)</span>
+            </div>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <div class="stat-pill">
+            <div class="num">8+</div>
+            <div class="lbl">Años de experiencia</div>
+          </div>
+          <div class="stat-pill">
+            <div class="num">124</div>
+            <div class="lbl">Servicios realizados</div>
+          </div>
+          <div class="stat-pill">
+            <div class="num">✓</div>
+            <div class="lbl">Antecedentes verificados</div>
+          </div>
+        </div>
+        <div class="services-tag-list">
+          <span class="tag">Adultos mayores</span>
+          <span class="tag">Enfermería básica</span>
+          <span class="tag">Alzheimer</span>
+          <span class="tag">Movilidad reducida</span>
+        </div>
+        <button class="btn-contratar">
+          Solicitar este servicio →
+        </button>
+      </div>
+
+      <div class="float-badge badge-1" style="animation: floatY 5s 1s ease-in-out infinite;">
+        <span class="badge-icon">🛡️</span>
+        <div>
+          <div style="font-size:12px;color:var(--gris-medio)">Con cobertura</div>
+          <div style="font-size:13px;font-weight:800;color:var(--negro)">ART + Seguro incluido</div>
+        </div>
+      </div>
+
+      <div class="float-badge badge-2" style="animation: floatY 4.5s 0.5s ease-in-out infinite;">
+        <span class="badge-icon">⚡</span>
+        <div>
+          <div style="font-size:12px;color:var(--gris-medio)">Respuesta en</div>
+          <div style="font-size:13px;font-weight:800;color:var(--negro)">Menos de 4 horas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA DUAL -->
+<section class="dual-section" id="para-quien">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">¿Qué necesitás?</div>
+    <h2 class="section-title">Elegí tu camino</h2>
+    <p class="section-desc">Somos la plataforma para las dos partes. Familias que buscan cuidado de calidad, y cuidadores que merecen trabajo digno.</p>
+  </div>
+  <div class="dual-cards">
+    <div class="dual-card familias reveal">
+      <span class="dual-card-icon">🏠</span>
+      <div class="dual-card-title">Para familias</div>
+      <div class="dual-card-desc">
+        Tu familiar en las mejores manos, y vos sin la carga administrativa.
+      </div>
+      <ul class="dual-card-list">
+        <li>Cuidadores verificados y capacitados</li>
+        <li>Gestión completa: salarios, impuestos y seguros</li>
+        <li>Sistema de reemplazos garantizado</li>
+        <li>Seguimiento y georreferenciación en tiempo real</li>
+        <li>Coordinación de turnos incluida</li>
+        <li>Soporte 24/7 para emergencias</li>
+      </ul>
+      <button class="btn-dual" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">
+        Buscar mi cuidador →
+      </button>
+    </div>
+    <div class="dual-card cuidadores reveal reveal-2">
+      <span class="dual-card-icon">⭐</span>
+      <div class="dual-card-title">Para cuidadores</div>
+      <div class="dual-card-desc">
+        Tu trabajo tiene valor. Formalizate, capacitate y crecé con nosotros.
+      </div>
+      <ul class="dual-card-list">
+        <li>Trabajo registrado con todos los derechos</li>
+        <li>Salario justo y pago puntual garantizado</li>
+        <li>Capacitación y certificación continua</li>
+        <li>Red cooperativa de colegas y apoyo mutuo</li>
+        <li>Acceso a más familias y más trabajo</li>
+        <li>Sin trámites ni burocracia</li>
+      </ul>
+      <button class="btn-dual" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">
+        Quiero sumarme →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="steps-section" id="como-funciona">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">El proceso</div>
+    <h2 class="section-title">Simple, seguro y sin sorpresas</h2>
+    <p class="section-desc">Tanto si sos familia como si sos cuidador, el proceso es transparente y está diseñado para que te sientas acompañado desde el primer paso.</p>
+  </div>
+  <div class="steps-wrapper">
+    <div class="steps-tabs">
+      <button class="tab-btn active" onclick="switchTab('familias', this)">Para familias</button>
+      <button class="tab-btn" onclick="switchTab('cuidadores', this)">Para cuidadores</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-familias">
+      <div class="steps-list">
+        <div class="step-item reveal">
+          <div class="step-num verde">1</div>
+          <div class="step-content">
+            <div class="step-title">Contanos qué necesitás</div>
+            <div class="step-desc">Completás un formulario simple con el tipo de cuidado, horarios, zona y características de tu familiar. En menos de 5 minutos tenemos todo lo que necesitamos.</div>
+            <span class="step-tag">⏱ 5 minutos</span>
+          </div>
+        </div>
+        <div class="step-item reveal reveal-2">
+          <div class="step-num verde">2</div>
+          <div class="step-content">
+            <div class="step-title">Seleccionamos el perfil ideal</div>
+            <div class="step-desc">Nuestro equipo selecciona de la red cooperativa a los cuidadores mejor calificados para tu caso. Revisamos antecedentes, formación y compatibilidad de perfil.</div>
+            <span class="step-tag">📋 Verificación completa</span>
+          </div>
+        </div>
+        <div class="step-item reveal reveal-3">
+          <div class="step-num verde">3</div>
+          <div class="step-content">
+            <div class="step-title">Te presentamos las opciones y elegís</div>
+            <div class="step-desc">Te mostramos perfiles con fotos, reseñas verificadas y experiencia. Podés hablar con el cuidador antes de confirmar. La decisión final siempre es tuya.</div>
+            <span class="step-tag">✅ Sin compromiso inicial</span>
+          </div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num verde">4</div>
+          <div class="step-content">
+            <div class="step-title">Empezamos y nos hacemos cargo del resto</div>
+            <div class="step-desc">Una vez confirmado, CUIDARnos gestiona salarios, aportes, seguros, ART y reemplazos en caso de ausencia. Vos hacés un solo pago mensual y nosotros resolvemos todo lo demás.</div>
+            <span class="step-tag">🛡️ Cobertura total</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-cuidadores">
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num dorado">1</div>
+          <div class="step-content">
+            <div class="step-title">Registrate en la plataforma</div>
+            <div class="step-desc">Completás tu perfil con tu experiencia, formación y disponibilidad. El registro es gratuito y no te compromete a nada.</div>
+            <span class="step-tag dorado-tag">🎓 Registro gratuito</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num dorado">2</div>
+          <div class="step-content">
+            <div class="step-title">Verificación y capacitación</div>
+            <div class="step-desc">Verificamos tus antecedentes y, si necesitás, accedés a nuestras capacitaciones certificadas. Cuanto más formación tenés, más oportunidades de trabajo.</div>
+            <span class="step-tag dorado-tag">📚 Formación incluida</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num dorado">3</div>
+          <div class="step-content">
+            <div class="step-title">Te asignamos familias</div>
+            <div class="step-desc">Según tu perfil y disponibilidad, te conectamos con familias que necesitan exactamente lo que vos ofrecés. Sos parte de una red cooperativa con valores compartidos.</div>
+            <span class="step-tag dorado-tag">🤝 Red cooperativa</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num dorado">4</div>
+          <div class="step-content">
+            <div class="step-title">Trabajás con derechos y seguridad</div>
+            <div class="step-desc">Salario registrado, aportes jubilatorios, obra social, ART y todos tus derechos laborales garantizados. Cobrás puntualmente, sin depender de si la familia paga o no.</div>
+            <span class="step-tag dorado-tag">💰 Salario garantizado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-number">7<span>M+</span></div>
+      <div class="stat-label">Adultos mayores en Argentina que necesitan cuidado</div>
+    </div>
+    <div class="stat-item reveal reveal-2">
+      <div class="stat-number"><span>+</span>70<span>%</span></div>
+      <div class="stat-label">Del sector opera en la informalidad hoy</div>
+    </div>
+    <div class="stat-item reveal reveal-3">
+      <div class="stat-number"><span>&lt;</span>4<span>h</span></div>
+      <div class="stat-label">Tiempo de respuesta desde tu primera consulta</div>
+    </div>
+    <div class="stat-item reveal reveal-4">
+      <div class="stat-number">100<span>%</span></div>
+      <div class="stat-label">Cuidadores con antecedentes verificados y asegurados</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIADORES -->
+<section class="diff-section" id="nosotros">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Por qué CUIDARnos</div>
+    <h2 class="section-title">La diferencia que<br>se siente en el día a día</h2>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card reveal">
+      <div class="diff-icon">🛡️</div>
+      <div class="diff-title">Gestión laboral 100% a cargo nuestro</div>
+      <div class="diff-desc">Salarios, aportes, obra social, ART, aguinaldo, vacaciones. Nos hacemos cargo de todo el vínculo laboral. Vos hacés un solo pago mensual.</div>
+      <span class="diff-highlight">→ Sin dolores de cabeza legales</span>
+    </div>
+    <div class="diff-card reveal reveal-2">
+      <div class="diff-icon">🔄</div>
+      <div class="diff-title">Reemplazos garantizados</div>
+      <div class="diff-desc">Si tu cuidador se enferma o no puede asistir, enviamos un reemplazo de igual perfil. La atención de tu familiar nunca se interrumpe.</div>
+      <span class="diff-highlight">→ Continuidad garantizada</span>
+    </div>
+    <div class="diff-card reveal reveal-3">
+      <div class="diff-icon">📍</div>
+      <div class="diff-title">Tecnología de seguimiento en tiempo real</div>
+      <div class="diff-desc">Sabés en todo momento que el cuidador llegó, está presente y todo está bien. Georreferenciación y confirmación de servicio integrados.</div>
+      <span class="diff-highlight">→ Tranquilidad verificable</span>
+    </div>
+    <div class="diff-card reveal">
+      <div class="diff-icon">🎓</div>
+      <div class="diff-title">Cuidadores capacitados y en formación continua</div>
+      <div class="diff-desc">No alcanza con buena voluntad. Nuestros cuidadores reciben formación certificada en primeros auxilios, Alzheimer, movilidad reducida y más.</div>
+      <span class="diff-highlight">→ Calidad técnica verificada</span>
+    </div>
+    <div class="diff-card reveal reveal-2">
+      <div class="diff-icon">🤝</div>
+      <div class="diff-title">Modelo cooperativo con impacto social real</div>
+      <div class="diff-desc">Cada vez que contratás a un cuidador de CUIDARnos, estás formalizando un trabajo históricamente precarizado. Cuidamos a quienes cuidan.</div>
+      <span class="diff-highlight">→ Empresa con propósito</span>
+    </div>
+    <div class="diff-card reveal reveal-3">
+      <div class="diff-icon">💬</div>
+      <div class="diff-title">Coordinación y soporte permanente</div>
+      <div class="diff-desc">Un equipo humano coordina los turnos, resuelve imprevistos y está disponible ante cualquier emergencia. No estás solo ante ningún problema.</div>
+      <span class="diff-highlight">→ Apoyo real, no solo una app</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVA -->
+<section class="compare-section">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Comparativa</div>
+    <h2 class="section-title">¿Por qué no buscar<br>por tu cuenta?</h2>
+    <p class="section-desc">Comparado con contratar directamente o usar clasificados, CUIDARnos resuelve lo que realmente pesa.</p>
+  </div>
+  <div class="compare-table-wrap reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>¿Qué incluye?</th>
+          <th>Clasificados / Boca a boca</th>
+          <th>Agencia tradicional</th>
+          <th class="highlight">✦ CUIDARnos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cuidadores verificados</td>
+          <td><span class="check-no">✗</span></td>
+          <td><span class="check-parcial">Parcial</span></td>
+          <td class="highlight"><span class="check-ok">✓</span></td>
+        </tr>
+        <tr>
+          <td>Gestión de salario y aportes</td>
+          <td><span class="check-no">✗</span> (recae en vos)</td>
+          <td><span class="check-no">✗</span></td>
+          <td class="highlight"><span class="check-ok">✓ Incluido</span></td>
+        </tr>
+        <tr>
+          <td>ART y seguro de vida</td>
+          <td><span class="check-no">✗</span></td>
+          <td><span class="check-no">✗</span></td>
+          <td class="highlight"><span class="check-ok">✓ Incluido</span></td>
+        </tr>
+        <tr>
+          <td>Reemplazo garantizado</td>
+          <td><span class="check-no">✗</span></td>
+          <td><span class="check-no">✗</span></td>
+          <td class="highlight"><span class="check-ok">✓ Siempre</span></td>
+        </tr>
+        <tr>
+          <td>Seguimiento y georreferenciación</td>
+          <td><span class="check-no">✗</span></td>
+          <td><span class="check-no">✗</span></td>
+          <td class="highlight"><span class="check-ok">✓</span></td>
+        </tr>
+        <tr>
+          <td>Capacitación del cuidador</td>
+          <td><span class="check-no">✗</span></td>
+          <td><span class="check-parcial">A veces</span></td>
+          <td class="highlight"><span class="check-ok">✓ Continua</span></td>
+        </tr>
+        <tr>
+          <td>Complejidad administrativa</td>
+          <td style="color:#E8654A;font-weight:700">Muy alta</td>
+          <td style="color:var(--dorado);font-weight:700">Alta</td>
+          <td class="highlight" style="color:var(--verde);font-weight:700">Nula</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="cobertura-section" id="servicios">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Cobertura</div>
+    <h2 class="section-title">¿Qué tipo de cuidado buscás?</h2>
+    <p class="section-desc">Contamos con especialistas para cada necesidad, disponibles en AMBA y principales ciudades del país.</p>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-card reveal">
+      <div class="servicio-icon">👴</div>
+      <div class="servicio-name">Adultos mayores</div>
+      <div class="servicio-desc">Acompañamiento diurno y nocturno, asistencia médica básica, estimulación cognitiva</div>
+    </div>
+    <div class="servicio-card reveal reveal-2">
+      <div class="servicio-icon">🧠</div>
+      <div class="servicio-name">Alzheimer y demencias</div>
+      <div class="servicio-desc">Especialistas en deterioro cognitivo, rutinas adaptadas, comunicación terapéutica</div>
+    </div>
+    <div class="servicio-card reveal reveal-3">
+      <div class="servicio-icon">♿</div>
+      <div class="servicio-name">Discapacidad</div>
+      <div class="servicio-desc">Acompañantes terapéuticos, asistencia en actividades diarias, integración social</div>
+    </div>
+    <div class="servicio-card reveal reveal-4">
+      <div class="servicio-icon">👶</div>
+      <div class="servicio-name">Niños y niñeras</div>
+      <div class="servicio-desc">Niñeras certificadas, estimulación temprana, cuidado responsable y verificado</div>
+    </div>
+    <div class="servicio-card reveal">
+      <div class="servicio-icon">🏥</div>
+      <div class="servicio-name">Post-operatorio</div>
+      <div class="servicio-desc">Recuperación en casa con asistencia profesional, seguimiento de indicaciones médicas</div>
+    </div>
+    <div class="servicio-card reveal reveal-2">
+      <div class="servicio-icon">🌙</div>
+      <div class="servicio-name">Cuidado nocturno</div>
+      <div class="servicio-desc">Turnos de noche para familias que necesitan descansar sin preocupaciones</div>
+    </div>
+    <div class="servicio-card reveal reveal-3">
+      <div class="servicio-icon">💊</div>
+      <div class="servicio-name">Asistencia médica</div>
+      <div class="servicio-desc">Administración de medicación, control de signos vitales, coordinación con médicos</div>
+    </div>
+    <div class="servicio-card reveal reveal-4">
+      <div class="servicio-icon">🧘</div>
+      <div class="servicio-name">Acompañamiento terapéutico</div>
+      <div class="servicio-desc">AT certificados para salud mental, integración comunitaria y autonomía personal</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios-section">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Lo que dicen</div>
+    <h2 class="section-title">Historias que nos dan sentido</h2>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testimonio-card reveal">
+      <div class="testimonio-quote">"</div>
+      <div class="testimonio-text">Después de meses buscando a alguien de confianza para mi mamá, con CUIDARnos encontramos a María en <em>menos de 48 horas</em>. Lo que más me alivió fue no tener que resolver yo los papeles del trabajo.</div>
+      <div class="testimonio-autor">
+        <div class="autor-avatar" style="background:var(--verde-claro);color:var(--verde-oscuro);">LC</div>
+        <div>
+          <div class="testimonio-stars">★★★★★</div>
+          <div class="autor-name">Laura C.</div>
+          <div class="autor-info">Palermo, CABA · Cuidado de adulta mayor</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonio-card reveal reveal-2">
+      <div class="testimonio-quote">"</div>
+      <div class="testimonio-text">Era cuidadora hace 10 años en negro, sin vacaciones ni obra social. CUIDARnos me cambió la vida: hoy estoy <em>registrada, con mi ART</em> y cobrando a fin de mes como cualquier trabajadora.</div>
+      <div class="testimonio-autor">
+        <div class="autor-avatar" style="background:var(--dorado-claro);color:#8B5E15;">SF</div>
+        <div>
+          <div class="testimonio-stars">★★★★★</div>
+          <div class="autor-name">Sandra F.</div>
+          <div class="autor-info">Lomas de Zamora · Cuidadora certificada</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonio-card reveal reveal-3">
+      <div class="testimonio-quote">"</div>
+      <div class="testimonio-text">Mi papá tiene Parkinson y necesitaba alguien con experiencia real. CUIDARnos no solo encontró al cuidador indicado, sino que <em>coordinaron el cambio de turno</em> cuando él no podía asistir. Nunca nos quedamos sin cobertura.</div>
+      <div class="testimonio-autor">
+        <div class="autor-avatar" style="background:var(--coral-claro);color:var(--coral);">MR</div>
+        <div>
+          <div class="testimonio-stars">★★★★★</div>
+          <div class="autor-name">Martín R.</div>
+          <div class="autor-info">San Isidro, GBA · Cuidado con Parkinson</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALIADOS -->
+<section class="aliados-section">
+  <div class="aliados-label">Impulsado por líderes que unen sector privado y economía popular</div>
+  <div class="aliados-logos">
+    <div class="aliado-pill">Gustavo Grobocopatel</div>
+    <div class="aliado-pill">Movimiento Evita</div>
+    <div class="aliado-pill">UTEP</div>
+    <div class="aliado-pill">Economía del Cuidado</div>
+    <div class="aliado-pill">Empresa Social</div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="cta">
+  <h2 class="cta-title reveal">
+    Tu familia merece<br>un cuidado sin incertidumbre
+  </h2>
+  <p class="cta-desc reveal reveal-2">
+    Dejanos tu teléfono o email y un asesor te contacta en menos de 4 horas. Sin costo, sin compromiso.
+  </p>
+
+  <form class="cta-form reveal reveal-3" onsubmit="handleCTA(event)">
+    <input
+      class="cta-input"
+      type="text"
+      id="cta-field"
+      placeholder="Tu nombre y teléfono o email"
+      required
+    />
+    <button class="btn-cta-gold" type="submit">
+      Quiero que me llamen
+    </button>
+  </form>
+
+  <div class="cta-alt reveal">
+    ¿Preferís hablar ahora?&nbsp;
+    <a href="https://wa.me/5491100000000?text=Hola%2C%20necesito%20información%20sobre%20CUIDARnos" target="_blank">
+      <button class="whatsapp-btn">
+        💬 WhatsApp directo
+      </button>
+    </a>
+  </div>
+
+  <div id="cta-success" style="display:none;margin-top:24px;position:relative;z-index:1;">
+    <div style="background:rgba(255,255,255,0.15);border-radius:16px;padding:20px 32px;display:inline-block;">
+      <div style="font-size:28px;margin-bottom:8px;">✅</div>
+      <div style="color:var(--blanco);font-weight:700;font-size:16px;">¡Perfecto! Te contactamos en breve.</div>
+      <div style="color:rgba(255,255,255,0.75);font-size:14px;margin-top:4px;">Nuestro equipo se pone en contacto en menos de 4 horas.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="nav-logo">
+      <span class="logo-leaf">✿</span> CUIDAR<em style="font-style:italic;color:var(--verde-medio)">nos</em>
+    </div>
+    <p class="footer-desc">
+      Empresa social argentina dedicada a formalizar y dignificar el mercado de cuidados, conectando familias con profesionales certificados.
+    </p>
+    <div class="footer-social">
+      <button class="social-btn">IG</button>
+      <button class="social-btn">FB</button>
+      <button class="social-btn">LI</button>
+      <button class="social-btn">WA</button>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Para familias</h4>
+    <a href="#">Solicitar cuidador</a>
+    <a href="#">Cómo funciona</a>
+    <a href="#">Tipos de cuidado</a>
+    <a href="#">Preguntas frecuentes</a>
+    <a href="#">Tarifas</a>
+  </div>
+  <div class="footer-col">
+    <h4>Para cuidadores</h4>
+    <a href="#">Registrarme</a>
+    <a href="#">Formación y cursos</a>
+    <a href="#">Red cooperativa</a>
+    <a href="#">Derechos laborales</a>
+    <a href="#">Testimonios</a>
+  </div>
+  <div class="footer-col">
+    <h4>Empresa</h4>
+    <a href="#">Quiénes somos</a>
+    <a href="#">Nuestro impacto</a>
+    <a href="#">Prensa</a>
+    <a href="#">Contacto</a>
+    <a href="#">Política de privacidad</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <div>© 2026 CUIDARnos — Empresa Social Argentina · cuidarnos.com.ar</div>
+  <div class="sello">🛡️ Sitio seguro · HTTPS · Datos protegidos</div>
+</div>
+
+<!-- WhatsApp flotante -->
+<a class="float-wa" href="https://wa.me/5491100000000?text=Hola%2C%20necesito%20información" target="_blank" rel="noopener">
+  <span style="font-size:26px;">💬</span>
+  <div class="float-wa-tooltip">¿Necesitás ayuda?</div>
+</a>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Tabs
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+// CTA form
+function handleCTA(e) {
+  e.preventDefault();
+  const val = document.getElementById('cta-field').value.trim();
+  if (!val) return;
+  document.querySelector('.cta-form').style.display = 'none';
+  document.querySelector('.cta-alt').style.display = 'none';
+  document.getElementById('cta-success').style.display = 'block';
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
